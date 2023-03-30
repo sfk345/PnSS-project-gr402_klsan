@@ -29,7 +29,7 @@ class Site
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && Doctor::create($request->all())) {
-            app()->route->redirect('/go');
+            return new View('site.signup', ['message'=>'Пользователь добавлен']);
         }
         return new View('site.signup');
     }

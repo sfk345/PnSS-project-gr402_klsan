@@ -11,14 +11,19 @@ class Doctor extends Model
 
    public $timestamps = false;
    protected $fillable = [
-       'Name',
        'Surname',
-       'Password'
+       'Name',
+       'Patronymic',
+       'Date of birth',
+       'Gender',
+       'ID_post',
+       'Specialisation',
+       'Password',
    ];
 
    protected static function booted()
    {
-       static::created(function ($user) {
+       static::created(function ($doctor) {
            $doctor->Password = md5($doctor->Password);
            $doctor->save();
        });
