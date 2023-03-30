@@ -43,7 +43,7 @@ class Doctor extends Model implements IdentityInterface
     public function attemptIdentity(array $credentials)
     {
         return self::where(['Name' => $credentials['Name'],
-            'password' => md5($credentials['password'])])->first();
+            'Password' => md5($credentials['Password'])])->first();
     }
 }
 

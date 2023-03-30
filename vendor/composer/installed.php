@@ -3,7 +3,7 @@
         'name' => 'sfk345/pnss',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'acf6ce565431557375aaf3f4d60adf2064994f63',
+        'reference' => '0cee6d9e1face16610fef482c2c6c9a371683239',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -129,6 +129,17 @@
             ),
             'dev_requirement' => false,
         ),
+        'nikic/fast-route' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '34128a32009e1b41c4615bcd7d4c39968931e9ea',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/fast-route',
+            'aliases' => array(
+                0 => '2.0.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'psr/container' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -160,7 +171,7 @@
         'sfk345/pnss' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'acf6ce565431557375aaf3f4d60adf2064994f63',
+            'reference' => '0cee6d9e1face16610fef482c2c6c9a371683239',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
