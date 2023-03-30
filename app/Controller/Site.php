@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\Patient;
+use Model\Doctor;
 use Src\Request;
 use Src\View;
 
@@ -24,5 +25,14 @@ class Site
     {
         return new View('site.hello', ['message' => 'hello working']);
     }
+
+    public function signup(Request $request): string
+   {
+       if ($request->method==='POST' && Doctor::create($request->all())){
+           return new View('site.signup', ['message'=>'Вы успешно зарегистрированы']);
+       }
+       return new View('site.signup');
+   }
+
 }
 
