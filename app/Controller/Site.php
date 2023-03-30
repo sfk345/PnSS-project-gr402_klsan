@@ -27,12 +27,12 @@ class Site
     }
 
     public function signup(Request $request): string
-   {
-       if ($request->method==='POST' && Doctor::create($request->all())){
-           return new View('site.signup', ['message'=>'Вы успешно зарегистрированы']);
-       }
-       return new View('site.signup');
-   }
-
+    {
+        if ($request->method === 'POST' && Doctor::create($request->all())) {
+            app()->route->redirect('/go');
+        }
+        return new View('site.signup');
+    }
+    
 }
 
