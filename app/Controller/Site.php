@@ -2,14 +2,22 @@
 
 namespace Controller;
 
+use Model\Patient;
+use Src\Request;
 use Src\View;
 
 class Site
 {
     public function index(): string
     {
-        $view = new View();
-        return $view->render('site.hello', ['message' => 'index working']);
+        $patients = Patient::all();
+        return (new View())->render('site.patient', ['patients' => $patients]);
+    }
+
+    public function indx(Request $request): string
+    {
+        $patients = Patient::where('ID_patient', $request->ID_patient)->get();
+        return (new View())->render('site.patient', ['patients' => $patients]);
     }
 
     public function hello(): string
