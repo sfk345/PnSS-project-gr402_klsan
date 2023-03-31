@@ -15,11 +15,12 @@ class Doctor extends Model implements IdentityInterface
        'Surname',
        'Name',
        'Patronymic',
-       'Date of birth',
+       'Date_of_birth',
        'Gender',
        'ID_post',
        'Specialisation',
        'Password',
+       'Role_id'
    ];
 
    protected static function booted()
@@ -30,14 +31,14 @@ class Doctor extends Model implements IdentityInterface
        });
    }
 
-    public function findIdentity(int $ID_doctor)
+    public function findIdentity(int $id)
     {
-        return self::where('ID_doctor', $ID_doctor)->first();
+        return self::where('id', $id)->first();
     }
 
     public function getId(): int
     {
-        return $this->ID_doctor;
+        return $this->id;
     }
 
     public function attemptIdentity(array $credentials)
