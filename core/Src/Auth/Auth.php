@@ -7,45 +7,50 @@ use Src\Session;
 class Auth
 {
    //Свойство для хранения любого класса, реализующего интерфейс IdentityInterface
-   private static IdentityInterface $doctor;
+   private static IdentityInterface $user;
 
    //Инициализация класса пользователя
-   public static function init(IdentityInterface $doctor): void
+   public static function init(IdentityInterface $user): void
    {
-       self::$doctor = $doctor;
-       if (self::doctor()) {
-           self::Name(self::doctor());
+       self::$user = $user;
+       if (self::user()) {
+           self::Name(self::user());
        }
    }
 
    //Вход пользователя по модели
-   public static function Name(IdentityInterface $doctor): void
+   public static function Name(IdentityInterface $user): void
    {
-       self::$doctor = $doctor;
-       Session::set('ID_doctor', self::$doctor->getId());
+       self::$user = $user;
+       Session::set('id', self::$user->getId());
    }
 
    //Аутентификация пользователя и вход по учетным данным
    public static function attempt(array $credentials): bool
    {
-       if ($doctor = self::$doctor->attemptIdentity($credentials)) {
-           self::Name($doctor);
+       if ($user = self::$user->attemptIdentity($credentials)) {
+           self::Name($user);
            return true;
        }
        return false;
    }
 
    //Возврат текущего аутентифицированного пользователя
-   public static function doctor()
+   public static function user()
    {
-       $id = Session::get('ID_doctor') ?? 0;
-       return self::$doctor->findIdentity($id);
+       $id = Session::get('id') ?? 0;
+       return self::$user->findIdentity($id);
    }
+
+//    public static function roleId()
+//    {
+//        return self::$user->role_id ?? 0;
+//    }
 
    //Проверка является ли текущий пользователь аутентифицированным
    public static function check(): bool
    {
-       if (self::doctor()) {
+       if (self::user()) {
            return true;
        }
        return false;
@@ -54,7 +59,7 @@ class Auth
    //Выход текущего пользователя
    public static function logout(): bool
    {
-       Session::clear('ID_doctor');
+       Session::clear('id');
        return true;
    }
 

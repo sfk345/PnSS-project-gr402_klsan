@@ -6,28 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
-class Doctor extends Model implements IdentityInterface
+class User extends Model implements IdentityInterface
 {
    use HasFactory;
 
    public $timestamps = false;
    protected $fillable = [
-       'Surname',
        'Name',
+       'Surname',
        'Patronymic',
        'Date_of_birth',
        'Gender',
        'ID_post',
-       'Specialisation',
-       'Password',
-       'Role_id'
+       'Password'
    ];
 
    protected static function booted()
    {
-       static::created(function ($doctor) {
-           $doctor->Password = md5($doctor->Password);
-           $doctor->save();
+       static::created(function ($user) {
+           $user->Password = md5($user->Password);
+           $user->save();
        });
    }
 

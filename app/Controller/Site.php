@@ -3,18 +3,33 @@
 namespace Controller;
 
 use Model\Patient;
-use Model\Doctor;
+use Model\User;
 use Src\Request;
 use Src\View;
 use Src\Auth\Auth;
 
 class Site
 {
-    public function index(): string
+    public function patient(): string
     {
         $patients = Patient::all();
         return (new View())->render('site.patient', ['patients' => $patients]);
     }
+
+    // public function doctor(): string
+    // {
+    //     $patients = Patient::all();
+    //     $doctors = Doctor::where('Name', app()->auth->doctor()->Name)->first();
+    //     return (new View())->render('site.doctor', ['doctors' => $doctors]);
+    // }
+
+    // public function registerPatient(Request $request): string
+    // {
+    //     $role_id = 1;
+    //     $administrator = Administrator::all();
+
+    //     if($_POST[''])
+    // }
 
     // public function indx(Request $request): string
     // {

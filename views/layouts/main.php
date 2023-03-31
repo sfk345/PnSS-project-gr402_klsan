@@ -20,6 +20,7 @@
        else:
            ?>
            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::doctor()->Name ?>)</a>
+           
        <?php
        endif;
        ?>
@@ -31,3 +32,15 @@
 
 </body>
 </html>
+<style>
+    *{
+        margin: 0;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+        background: antiquewhite;
+        padding: 15px;
+        gap: 15em;
+    }
+</style>
