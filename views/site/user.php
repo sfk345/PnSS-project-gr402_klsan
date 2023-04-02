@@ -4,25 +4,24 @@
             <img src="#" alt="#">
         </div>
         <div id="data">
-            <p>Фамилия: <?= $doctors->Surname;?></p>
-            <p>Имя: <?= $doctors->Name;?></p>
-            <p>Отчество: <?= $doctors->Patronymic;?></p>
-            <p>Дата рождения: <?= $doctors->Date_of_birth;?></p>
-            <p>Специализация: <?= $doctors->Specialisation;?></p>
+            <p>Фамилия: <?= $users->Surname;?></p>
+            <p>Имя: <?= $users->Name;?></p>
+            <p>Отчество: <?= $users->Patronymic;?></p>
+            <p>Дата рождения: <?= $users->Date_of_birth;?></p>
         </div>
     </div>
     <div class="admissions">
         <div class="future-admissions">
             <h3>Будущие записи</h3>
-            <?php
-            // foreach ($admissions as $adm) {
-            //     echo '<li>' . $adm->Date_of_birth . '</li>'
-            // }
-            ?>
+            <a href="admission">Открыть</a>
         </div>
         <div class="past-admissions">
             <h3>Прошедшие записи</h3>
-
+            <a href="#">Открыть</a>
+        </div>
+        <div class="patients">
+            <h3>Пациенты</h3>
+            <a href="patient">Открыть</a>
         </div>
     </div>
 </div>
@@ -46,5 +45,17 @@
     }
     #data{
         margin-left: 20px;
+    }
+    .admissions{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+
+    }
+    .past-admissions{
+        margin-top: 20px;
+    }
+    .future-admissions{
+        margin-top: 20px;
     }
 </style>

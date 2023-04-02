@@ -11,9 +11,16 @@ class Patient extends Model
     public $timestamps = false;
     public $table = 'patient';
     protected $fillable = [
+//        'id',
         'Surname',
         'Name',
         'Patronymic',
         'Date_of_birth',
     ];
+    protected static function booted()
+    {
+        static::created(function ($patients) {
+            $patients->save();
+        });
+    }
 }

@@ -10,33 +10,6 @@ use Src\Auth\Auth;
 
 class Site
 {
-    public function patient(): string
-    {
-        $patients = Patient::all();
-        return (new View())->render('site.patient', ['patients' => $patients]);
-    }
-
-    // public function doctor(): string
-    // {
-    //     $patients = Patient::all();
-    //     $doctors = Doctor::where('Name', app()->auth->doctor()->Name)->first();
-    //     return (new View())->render('site.doctor', ['doctors' => $doctors]);
-    // }
-
-    // public function registerPatient(Request $request): string
-    // {
-    //     $role_id = 1;
-    //     $administrator = Administrator::all();
-
-    //     if($_POST[''])
-    // }
-
-    // public function indx(Request $request): string
-    // {
-    //     $patients = Patient::where('ID_patient', $request->ID_patient)->get();
-    //     return (new View())->render('site.patient', ['patients' => $patients]);
-    // }
-
     public function hello(): string
     {
         return new View('site.hello', ['message' => 'hello working']);
@@ -44,7 +17,7 @@ class Site
 
     public function signup(Request $request): string
     {
-        if ($request->method === 'POST' && Doctor::create($request->all())) {
+        if ($request->method === 'POST' && User::create($request->all())) {
             app()->route->redirect('/hello');
         }
         return new View('site.signup');

@@ -5,29 +5,24 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Doctor extends Model
+class Admission extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
-    public $table = 'users';
+    public $table = 'admission';
     protected $fillable = [
         'id',
-        'Name',
-        'Surname',
-        'Patronymic',
-        'Date_of_birth',
-        'Gender',
-        'ID_post',
-        'Password'
+        'ID_patient',
+        'ID_doctor',
+        'ID_office',
+        'Date_of_admission',
+        'ID_diagnosis'
     ];
 
     protected static function booted()
     {
-        static::created(function ($doctors) {
-            $doctors->save();
+        static::created(function ($admissions) {
+            $admissions->save();
         });
     }
-
 }
