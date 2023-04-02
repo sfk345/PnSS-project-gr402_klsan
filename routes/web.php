@@ -7,8 +7,9 @@ Route::add('GET', '/user', [Controller\Doctor::class, 'user'])->middleware('auth
 Route::add('GET', '/patient', [Controller\Admin::class, 'patient'])->middleware('auth');
 Route::add(['GET', 'POST'], '/addPatient', [Controller\Register::class, 'addPatient']);
 Route::add(['GET', 'POST'], '/addAdmission', [Controller\Register::class, 'addAdmission']);
-Route::add(['GET', 'POST'], '/addDoctor', [Controller\Admin::class, 'addDoctor']);
 Route::add(['GET', 'POST'], '/addOffice', [Controller\Admin::class, 'addOffice']);
+Route::add(['GET', 'POST'], '/addDiagnosis', [Controller\Admin::class, 'addDiagnosis']);
+Route::add(['GET', 'POST'], '/addAdm', [Controller\Admin::class, 'addAdm']);
 Route::add(['GET', 'POST'], '/addUser', [Controller\Admin::class, 'addUser']);
 Route::add('GET', '/admission', [Controller\Doctor::class, 'admission'])->middleware('auth');
 Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup']);

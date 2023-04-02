@@ -28,6 +28,7 @@
            <a href="<?= app()->route->getUrl('/addUser') ?>">Добавление пользователя</a>
            <a href="<?= app()->route->getUrl('/admission') ?>">Просмотр записей</a>
            <a href="<?= app()->route->getUrl('/patient') ?>">Просмотр пациентов</a>
+           <a href="<?= app()->route->getUrl('/addAdm') ?>">Диагноз/кабинет</a>
        <?php endif;?>
 
        <?php
@@ -61,6 +62,6 @@
         justify-content: center;
         background: antiquewhite;
         padding: 15px;
-        gap: 15em;
+        gap: 10em;
     }
 </style>

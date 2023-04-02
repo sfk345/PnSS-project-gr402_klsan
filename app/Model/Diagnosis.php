@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Office extends Model
+class Diagnosis extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
-    public $table = 'office';
+    public $table = 'diagnosis';
     protected $fillable = [
         'id',
-        'Office'
+        'Diagnosis'
     ];
 
     protected static function booted()
     {
-        static::created(function ($offices) {
-            $offices->save();
+        static::created(function ($diagnosises) {
+            $diagnosises->save();
         });
     }
 
