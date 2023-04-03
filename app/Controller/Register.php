@@ -20,6 +20,7 @@ class Register
 
     public function addAdmission(Request $request): string
     {
+
         if ($request->method === 'POST' && Admission::create($request->all())) {
             app()->route->redirect('/admission');
         }

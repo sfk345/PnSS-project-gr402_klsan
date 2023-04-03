@@ -23,4 +23,14 @@ class Patient extends Model
             $patients->save();
         });
     }
+
+    public function admissions()
+    {
+        return $this->hasMany(Admission::class,'ID_patient', 'id');
+    }
+
+//    public function ()
+//    {
+//        return $this->hasMany(Admission::class,'ID_patient', 'id');
+//    }
 }

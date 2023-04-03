@@ -6,6 +6,9 @@ use Error;
 
 class Request
 {
+    /**
+     * @var mixed
+     */
     protected array $body;
     public string $method;
     public array $headers;
