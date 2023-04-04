@@ -12,8 +12,9 @@ class Office extends Model
 
     public $timestamps = false;
     public $table = 'office';
+    protected $primaryKey = 'ID_office';
     protected $fillable = [
-        'id',
+        'ID_office',
         'Office'
     ];
 

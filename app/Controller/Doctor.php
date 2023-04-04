@@ -33,4 +33,31 @@ class Doctor
         //$admissions = Admission::where('id', $request->id)->first();
         return (new View())->render('site.onePatient', ['patients' => $patients, /*'admissions' => $admissions*/]);
     }
+
+    // public function oneDoctor(Request $request): string
+    // {
+    //     $users = User::where('id', $request->id)->first();
+    //     $admissions = Admission::where('id', $users->id)->get();
+    //     $patients = [];
+
+    //     foreach ($admissions as $admission){
+    //         $patients[] = Patient::where('ID_patient', $admission->ID_patient)->first();
+    //     }
+    //     return (new View())->render('site.user', [
+    //         'patients' => $patients,
+    //         'admissions' => $admissions,
+    //         'users' => $users
+    //     ]);
+    // }
+
+    // public function updateDiagnosis(Request $request): string
+    // {
+    //     $diagnosis = Diagnosis::where('id', $request->id)->get();
+    //     if ($request->method === 'POST') {
+    //         $diagnosis[0]->Diagnosis = $request->Diagnosis;
+    //         $diagnosis[0]->save();
+    //         app()->route->redirect('/onePatient');
+    //     }
+    //     return (new View())->render('site.updateDiagnosis', ['diagnosis' => $diagnosis]);
+    // }
 }

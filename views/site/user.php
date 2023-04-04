@@ -12,12 +12,8 @@
     </div>
     <div class="admissions">
         <div class="future-admissions">
-            <h3>Будущие записи</h3>
+            <h3>Записи</h3>
             <a href="admission">Открыть</a>
-        </div>
-        <div class="past-admissions">
-            <h3>Прошедшие записи</h3>
-            <a href="#">Открыть</a>
         </div>
         <div class="patients">
             <h3>Пациенты</h3>
@@ -26,6 +22,12 @@
     </div>
 </div>
 <style>
+    p{
+        margin-top: 5px;
+        font-family: sans-serif;
+        font-weight: 750;
+        color: #6c0000;
+    }
     .offic-of-doctor{
         display: flex;
         flex-direction: column;
@@ -54,8 +56,29 @@
     }
     .past-admissions{
         margin-top: 20px;
+        font-family: sans-serif;
+        font-weight: 750;
+        color: #6c0000;
     }
     .future-admissions{
         margin-top: 20px;
+        font-family: sans-serif;
+        font-weight: 750;
+        color: #6c0000;
+    }
+    .patients{
+        margin-top: 20px;
+        font-family: sans-serif;
+        font-weight: 750;
+        color: #6c0000;
+    }
+    .patients > a:hover{
+        border-bottom: 3px solid;
+    }
+    .future-admissions > a:hover{
+        border-bottom: 3px solid;
+    }
+    .past-admissions > a:hover{
+        border-bottom: 3px solid;
     }
 </style>

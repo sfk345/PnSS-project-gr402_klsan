@@ -12,17 +12,6 @@
    <nav>
        <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
        <?php
-       if (!app()->auth::check()):
-           ?>
-           <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-           <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
-       <?php else:?>
-           <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->Name ?>)</a>
-       <?php
-       endif;
-       ?>
-
-       <?php
        if (app()->auth::idPost() == 1):
            ?>
            <a href="<?= app()->route->getUrl('/addUser') ?>">Добавление пользователя</a>
@@ -43,9 +32,20 @@
        ?>
            <a href="<?= app()->route->getUrl('/user') ?>">Личный кабинет доктора</a>
        <?php endif;?>
-
-
    </nav>
+
+   <div class="authentication">
+   <?php
+       if (!app()->auth::check()):
+           ?>
+           <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
+           <a id="signup" href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
+       <?php else:?>
+           <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->Name ?>)</a>
+       <?php
+       endif;
+       ?>
+   </div>
 </header>
 <main>
    <?= $content ?? '' ?>
@@ -57,11 +57,36 @@
     *{
         margin: 0;
     }
-    nav{
+    a{
+        text-decoration: none;
+        color: #6c0000;
+        font-family: sans-serif;
+        font-weight: 750;
+    }
+    main{
         display: flex;
-        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
         background: antiquewhite;
         padding: 15px;
-        gap: 10em;
+    }
+    nav{
+        justify-content: center;
+        display: flex;
+        gap: 5em;
+        font-family: sans-serif;
+        font-weight: 750;
+    }
+    .authentication{
+        font-family: sans-serif;
+        font-weight: 750;
+        
+    }
+    #signup{
+        margin-left: 20px;
     }
 </style>

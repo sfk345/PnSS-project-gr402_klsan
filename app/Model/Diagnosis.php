@@ -12,8 +12,9 @@ class Diagnosis extends Model
 
     public $timestamps = false;
     public $table = 'diagnosis';
+    protected $primaryKey = 'ID_diagnosis';
     protected $fillable = [
-        'id',
+        'ID_diagnosis',
         'Diagnosis'
     ];
 

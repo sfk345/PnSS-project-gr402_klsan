@@ -4,6 +4,7 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Src\Auth\IdentityInterface;
 
 class Admission extends Model
 {
@@ -18,6 +19,14 @@ class Admission extends Model
         'Date_of_admission',
         'ID_diagnosis'
     ];
+
+    // public function adm():BelongTo
+    // {
+    //     return $this->BelongTo(
+    //         Admissions::class,
+    //         ''
+    //     )
+    // }
 
     protected static function booted()
     {

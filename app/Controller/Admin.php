@@ -4,7 +4,6 @@ namespace Controller;
 
 use Model\Office;
 use Model\Patient;
-use Model\Doctor;
 use Model\Diagnosis;
 use Src\Request;
 use Src\View;
@@ -32,14 +31,16 @@ class Admin
         if ($request->method === 'POST' && Office::create($request->all())) {
             app()->route->redirect('/hello');
         }
-        return new View('site.addOffice');
+        return (new View())->render('site.addOffice');
     }
 
     public function addDiagnosis(Request $request): string
     {
+        //var_dump($request);die();
         if ($request->method === 'POST' && Diagnosis::create($request->all())) {
             app()->route->redirect('/hello');
         }
-        return new View('site.addDiagnosis');
+        return (new View())->render('site.addDiagnosis');
     }
+
 }
