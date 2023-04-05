@@ -20,6 +20,8 @@ return [
        'required' => \Validators\RequireValidator::class,
        'unique' => \Validators\UniqueValidator::class,
        'password' => \Validators\PasswordValidator::class,
+       'varchar' => \Validators\VarcharValidator::class,
+       'cyrillic' => \Validators\CyrillicValidator::class,
 //       'unique' => \Validators\UniqueValidator::class,
    ]
 ];

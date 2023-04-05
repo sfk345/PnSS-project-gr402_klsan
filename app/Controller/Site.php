@@ -29,16 +29,18 @@ class Site
             // var_dump($tmp_file, $uploads_dir . $img['name']);die();
 
             $validator = new Validator($request->all(), [
-                'Name' => ['required'],
-                'Surname' => ['required', /*'unique:users,login'*/],
-                'Patronymic' => ['required'],
+                'Name' => ['required', 'cyrillic:users, name'],
+                'Surname' => ['required', 'cyrillic:users, surname'],
+                'Patronymic' => ['required', 'cyrillic:users, patronymic'],
                 'Date_of_birth' => ['required'],
 //                'Gender' => ['required'],
-                'Password' => ['required', 'password:users, password']
+                'Password' => ['required', 'password:users, password', 'varchar:users, password']
             ], [
                 'required' => 'Поле :field пусто',
 //                'unique' => 'Поле :field должно быть уникально',
                 'password' => 'Поле :field должен содержать не менее 5 символов',
+                'varchar' => 'Поле :field должен содержать только латинские символы',
+                'cyrillic' => 'Поле :field должен содержать только кирилические символы',
             ]);
 
             if($validator->fails()){
