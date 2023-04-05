@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Validators\AllValidator;
 use Src\Validator\Validator;
 use Model\Patient;
 use Model\User;
@@ -18,6 +19,8 @@ class Site
 
     public function signup(Request $request): string
     {
+        $allValidator = new AllValidator();
+
         if ($request->method === 'POST') {
 
             $uploads_dir = $_SERVER['DOCUMENT_ROOT']. '/public/img/';
@@ -28,24 +31,12 @@ class Site
             move_uploaded_file($tmp_file, $uploads_dir . $img['name']);
             // var_dump($tmp_file, $uploads_dir . $img['name']);die();
 
-            $validator = new Validator($request->all(), [
-                'Name' => ['required', 'cyrillic:users, name'],
-                'Surname' => ['required', 'cyrillic:users, surname'],
-                'Patronymic' => ['required', 'cyrillic:users, patronymic'],
-                'Date_of_birth' => ['required'],
-//                'Gender' => ['required'],
-                'Password' => ['required', 'password:users, password', 'varchar:users, password']
-            ], [
-                'required' => 'Поле :field пусто',
-//                'unique' => 'Поле :field должно быть уникально',
-                'password' => 'Поле :field должен содержать не менее 5 символов',
-                'varchar' => 'Поле :field должен содержать только латинские символы',
-                'cyrillic' => 'Поле :field должен содержать только кирилические символы',
-            ]);
+            $validator = new Validator($request->all(), $allValidator->signupValidator,
+            $allValidator->signupValidatorMessages);
 
             if($validator->fails()){
                 return new View('site.signup',
-                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                    ['message' => $validator->errors()]);
             }
 
             if (User::create($request->all())) {

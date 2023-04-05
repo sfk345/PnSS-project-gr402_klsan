@@ -43,4 +43,10 @@ class Admin
         return (new View())->render('site.addDiagnosis');
     }
 
+    public function diagnosises(): string
+    {
+        $diagnosises = Diagnosis::all();
+        return (new View())->render('site.diagnosises', ['diagnosises' => $diagnosises]);
+    }
+
 }
