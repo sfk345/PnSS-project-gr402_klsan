@@ -5,6 +5,9 @@ use Src\Route;
 Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth');
 Route::add('GET', '/user', [Controller\Doctor::class, 'user'])->middleware('auth');
 Route::add('GET', '/patient', [Controller\Admin::class, 'patient'])->middleware('auth');
+
+Route::add('GET', '/diagnosises', [Controller\Admin::class, 'diagnosises']);
+
 Route::add(['GET', 'POST'], '/addPatient', [Controller\Register::class, 'addPatient']);
 Route::add(['GET', 'POST'], '/addAdmission', [Controller\Register::class, 'addAdmission']);
 Route::add(['GET', 'POST'], '/addOffice', [Controller\Admin::class, 'addOffice']);

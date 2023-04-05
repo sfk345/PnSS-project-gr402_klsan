@@ -1,5 +1,10 @@
 <h2>Регистрация нового пользователя</h2>
-<h3><?= $message ?? ''; ?></h3>
+<?php foreach($message as $mas => $value){
+   foreach($value as $errorMessages){
+      echo '<p style="color: red">'.$errorMessages.'</p>';
+   }
+}; 
+?>
 <form method="post" enctype="multipart/form-data">
    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
    <label>Аватар <input type="file" name="img"></label>
