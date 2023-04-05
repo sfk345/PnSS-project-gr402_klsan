@@ -2,6 +2,7 @@
     <h2>Добавление пациента</h2>
     <div class="add-patient">
         <form method="post">
+            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
             <label>Имя <input type="text" name="Name"></label>
             <label>Фамилия <input type="text" name="Surname"></label>
             <label>Отчество <input type="text" name="Patronymic"></label>

@@ -2,6 +2,7 @@
     <h2>Добавление кабинета</h2>
     <div class="add-patient">
         <form method="post">
+            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
             <label>Название кабинета <input type="text" name="Office"></label>
             <button>Добавить</button>
         </form>

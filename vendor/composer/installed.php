@@ -3,7 +3,7 @@
         'name' => 'sfk345/pnss',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '8e25c5918f120c2a5b65bbbfcacebf3d76ec5133',
+        'reference' => 'a68faaf72aad81cf6643d286d3182191d280b909',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -171,7 +171,7 @@
         'sfk345/pnss' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8e25c5918f120c2a5b65bbbfcacebf3d76ec5133',
+            'reference' => 'a68faaf72aad81cf6643d286d3182191d280b909',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -202,7 +202,7 @@
         'symfony/translation' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => 'ae58728630949fa443d94c394198bbf3d7bc7716',
+            'reference' => '4eaba3573adcba5fec6589b806378a35cdcac9fc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/translation',
             'aliases' => array(),

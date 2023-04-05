@@ -11,7 +11,9 @@ class User extends Model implements IdentityInterface
    use HasFactory;
 
    public $timestamps = false;
-   protected $fillable = [
+    protected $primaryKey = 'id';
+    protected $fillable = [
+       'img',
        'Name',
        'Surname',
        'Patronymic',

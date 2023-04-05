@@ -20,16 +20,25 @@ class Site
     {
         if ($request->method === 'POST') {
 
+            $uploads_dir = $_SERVER['DOCUMENT_ROOT']. '/pnss-new/public/img/';
+            $img = $_FILES['img'];
+           // var_dump($_FILES['img']);
+            $tmp_file = $img['tmp_name'];
+           // var_dump($img['tmp_name']);
+            move_uploaded_file($tmp_file, $uploads_dir . $img['name']);
+           //var_dump($tmp_file, $uploads_dir . $img['name']);die();
+
             $validator = new Validator($request->all(), [
                 'Name' => ['required'],
                 'Surname' => ['required', /*'unique:users,login'*/],
                 'Patronymic' => ['required'],
-//                'Date_of_birth' => ['required'],
+                'Date_of_birth' => ['required'],
 //                'Gender' => ['required'],
-                'Password' => ['required']
+                'Password' => ['required', 'password:users, password']
             ], [
                 'required' => 'Поле :field пусто',
-//                'unique' => 'Поле :field должно быть уникально'
+//                'unique' => 'Поле :field должно быть уникально',
+                'password' => 'Поле :field должен содержать не менее 5 символов',
             ]);
 
             if($validator->fails()){

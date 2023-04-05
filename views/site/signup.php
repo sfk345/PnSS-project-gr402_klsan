@@ -1,8 +1,9 @@
 <h2>Регистрация нового пользователя</h2>
 <h3><?= $message ?? ''; ?></h3>
-<form method="post">
-    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
-    <label>Имя <input type="text" name="Name"></label>
+<form method="post" enctype="multipart/form-data">
+   <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
+   <label>Аватар <input type="file" name="img"></label>
+   <label>Имя <input type="text" name="Name"></label>
    <label>Фамилия <input type="text" name="Surname"></label>
    <label>Отчество <input type="text" name="Patronymic"></label>
    <label>Дата рождения <input type="date" name="Date_of_birth"></label>
@@ -12,7 +13,7 @@
          <option value="М">М</option>
       </select>
    </label>
-   <label>Должностьname
+   <label>Должность
       <select name="ID_post">
          <option value="1">Админ</option>
          <option value="2">Регистратура</option>

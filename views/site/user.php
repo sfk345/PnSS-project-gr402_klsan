@@ -1,7 +1,7 @@
 <div class="offic-of-doctor">
     <div class="data-of-doctor">
         <div id="img">
-            <img src="#" alt="#">
+            <img src="./../img/fly-default#5682a3.png" alt="#">
         </div>
         <div id="data">
             <p>Фамилия: <?= $users->Surname;?></p>

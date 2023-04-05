@@ -2,6 +2,7 @@
     <h2>Запись</h2>
 </div>
     <form method="post">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
         <div>
             <input disabled name="id" value="<?= $admissions->id ?>"><br>
             <lable>Пациент: <?= $patients->Surname . ' '

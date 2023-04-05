@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit20170029a727f6ec62210ae25028a691
+class ComposerStaticInit8cbe80a4d5b9a288baae56caf86ac8bb
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -98,9 +98,9 @@ class ComposerStaticInit20170029a727f6ec62210ae25028a691
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/macroable',
-            1 => __DIR__ . '/..' . '/illuminate/collections',
-            2 => __DIR__ . '/..' . '/illuminate/support',
-            3 => __DIR__ . '/..' . '/illuminate/conditionable',
+            1 => __DIR__ . '/..' . '/illuminate/conditionable',
+            2 => __DIR__ . '/..' . '/illuminate/collections',
+            3 => __DIR__ . '/..' . '/illuminate/support',
         ),
         'Illuminate\\Pipeline\\' => 
         array (
@@ -160,10 +160,10 @@ class ComposerStaticInit20170029a727f6ec62210ae25028a691
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit20170029a727f6ec62210ae25028a691::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit20170029a727f6ec62210ae25028a691::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit20170029a727f6ec62210ae25028a691::$fallbackDirsPsr4;
-            $loader->classMap = ComposerStaticInit20170029a727f6ec62210ae25028a691::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8cbe80a4d5b9a288baae56caf86ac8bb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8cbe80a4d5b9a288baae56caf86ac8bb::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit8cbe80a4d5b9a288baae56caf86ac8bb::$fallbackDirsPsr4;
+            $loader->classMap = ComposerStaticInit8cbe80a4d5b9a288baae56caf86ac8bb::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -2,6 +2,7 @@
     <h2>Запиь на прием</h2>
     <div class="add-patient">
         <form method="post">
+            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
             <label>Пациент<br>
                 <select name="ID_patient">
                     <option>Выбор пациента</option>
