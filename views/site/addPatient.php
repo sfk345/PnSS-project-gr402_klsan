@@ -1,3 +1,9 @@
+<?php foreach($message as $mas => $value){
+      foreach($value as $errorMessages){
+         echo '<p style="color: red">'.$errorMessages.'</p>';
+      }
+   }; 
+?>
 <div class="fut-admissions">
     <h2>Добавление пациента</h2>
     <div class="add-patient">

@@ -44,10 +44,6 @@
                     ?>
                 </select>
             </label>
-            <!-- <label>Доктор <input type="text" name="ID_doctor"></label>
-            <label>Кабинет <input type="text" name="ID_office"></label>
-            <label>Дата приема <input type="date" name="Date_of_admission"></label>
-            <label>Диагноз <input type="text" name="ID_diagnosis"></label> -->
             <button>Добавить</button>
         </form>
     </div>

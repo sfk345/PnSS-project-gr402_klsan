@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Validators\AllValidator;
+use Src\Validator\Validator;
 use Model\Admission;
 use Model\Office;
 use Model\Patient;
@@ -42,17 +44,41 @@ class Admin
 
     public function addOffice(Request $request): string
     {
-        if ($request->method === 'POST' && Office::create($request->all())) {
-            app()->route->redirect('/hello');
+        $allValidator = new AllValidator();
+
+        if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), $allValidator->addOfficeValidator,
+            $allValidator->addOfficeMessages);
+
+            if($validator->fails()){
+                return new View('site.addOffice',
+                    ['message' => $validator->errors()]);
+            }else{
+                $offices = Office::create($request->all());
+                app()->route->redirect('/addOffice');
+            }
         }
         return (new View())->render('site.addOffice');
     }
 
     public function addDiagnosis(Request $request): string
     {
-        //var_dump($request);die();
-        if ($request->method === 'POST' && Diagnosis::create($request->all())) {
-            app()->route->redirect('/diagnosises');
+
+        $allValidator = new AllValidator();
+
+        if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), $allValidator->addDiagnosisValidator,
+            $allValidator->addDiagnosisMessages);
+
+            if($validator->fails()){
+                return new View('site.signup',
+                    ['message' => $validator->errors()]);
+            }else{
+                $diagnosis = Diagnosis::create($request->all());
+                app()->route->redirect('/diagnosises');
+            }
         }
         return (new View())->render('site.addDiagnosis');
     }

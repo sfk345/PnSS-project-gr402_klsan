@@ -43,7 +43,7 @@ class Site
                     ['message' => $validator->errors()]);
             }else{
                 $img = $_FILES['img'];
-            $user = User::create($request->all());
+                $user = User::create($request->all());
                 $user->photo($img);
                 $user->save();
                 app()->route->redirect('/login');

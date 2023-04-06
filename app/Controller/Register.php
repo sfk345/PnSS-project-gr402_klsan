@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Validators\AllValidator;
+use Src\Validator\Validator;
 use Model\Admission;
 use Model\Patient;
 use Model\Post;
@@ -15,11 +17,22 @@ class Register
 {
     public function addPatient(Request $request): string
     {
-        if ($request->method === 'POST' && Patient::create($request->all())) {
-            app()->route->redirect('/patient');
+        $allValidator = new AllValidator();
+
+        if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), $allValidator->addPatientValidator,
+            $allValidator->addPatientMessages);
+
+            if($validator->fails()){
+                return new View('site.addPatient',
+                    ['message' => $validator->errors()]);
+            }else{
+                $patients = Patient::create($request->all());
+                app()->route->redirect('/addPatient');
+            }
         }
         return (new View())->render('site.addPatient');
-
     }
 
     public function addAdmission(Request $request): string
