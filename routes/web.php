@@ -4,7 +4,7 @@ use Src\Route;
 
 Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth');
 Route::add('GET', '/user', [Controller\Doctor::class, 'user'])->middleware('auth');
-Route::add('GET', '/patient', [Controller\Admin::class, 'patient'])->middleware('auth');
+Route::add(['GET', 'POST'], '/patient', [Controller\Admin::class, 'patient'])->middleware('auth');
 
 Route::add('GET', '/diagnosises', [Controller\Admin::class, 'diagnosises'])->middleware('auth');
 Route::add('GET', '/offices', [Controller\Admin::class, 'offices'])->middleware('auth');
@@ -16,7 +16,7 @@ Route::add(['GET', 'POST'], '/addDiagnosis', [Controller\Admin::class, 'addDiagn
 
 Route::add('GET', '/onePatient', [Controller\Doctor::class, 'onePatient'])->middleware('auth');
 Route::add(['GET', 'POST'], '/oneAdmission', [Controller\Register::class, 'oneAdmission'])->middleware('auth');
-Route::add(['GET', 'POST'], '/oneAdmin', [Controller\Register::class, 'oneAdmin'])->middleware('auth');
+// Route::add(['GET', 'POST'], '/oneAdmin', [Controller\Register::class, 'oneAdmin'])->middleware('auth');
 
 
 Route::add(['GET', 'POST'], '/updateDiagnosis', [Controller\Doctor::class, 'updateDiagnosis'])->middleware('auth');

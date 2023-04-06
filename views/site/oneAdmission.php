@@ -21,7 +21,7 @@
             </div>
             <lable>Диагноз:
                 <?= $diagnos->Diagnosis ?><br>
-                <?php if ((app()->auth->user()->Role_id = 1)): ?>
+                <?php if ((app()->auth->user()->Role_id = 3)): ?>
                 <select name="ID_diagnosis">
                     <?php foreach ($diagnosises as $d){
                         echo '<option value="' .$d->ID_diagnosis. '">' . $d->Diagnosis;

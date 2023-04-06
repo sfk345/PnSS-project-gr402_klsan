@@ -1,7 +1,7 @@
 <div class="offic-of-doctor">
     <div class="data-of-doctor">
-        <div id="img">
-            <img src="../../pnss-new/public/img/<?= $users->img;?>" style="width: 100px">
+        <div id="img-user">
+            <img src="public/img/<?= $users->img;?>" style="width: 150px">
         </div>
         <div id="data">
             <p>Фамилия: <?= $users->Surname;?></p>
@@ -10,16 +10,22 @@
             <p>Дата рождения: <?= $users->Date_of_birth;?></p>
         </div>
     </div>
-    <div class="admissions">
-        <div class="future-admissions">
-            <h3>Записи</h3>
-            <a href="admission">Открыть</a>
-        </div>
-        <div class="patients">
-            <h3>Пациенты</h3>
-            <a href="patient">Открыть</a>
-        </div>
-    </div>
+    <div class="pages">
+        <a href="<?= app()->route->getUrl('/patient') ?>">Список пациентов</a>
+        <?php
+        if (app()->auth::idPost() == 1):
+            ?>
+            <a href="<?= app()->route->getUrl('/diagnosises') ?>">Список диагнозов</a>
+            <a href="<?= app()->route->getUrl('/offices') ?>">Список кабинетов</a>
+            <a href="<?= app()->route->getUrl('/signup') ?>">Добавление пользователя</a>
+        <?php endif;?>
+
+        <?php
+        if (app()->auth::idPost() == 2):
+                ?>
+                <a href="<?= app()->route->getUrl('/addAdmission') ?>">Запись на прием</a>
+                <a href="<?= app()->route->getUrl('/admission') ?>">Просмотр записей</a>
+        <?php endif;?>
 </div>
 <style>
     p{
@@ -28,10 +34,14 @@
         font-weight: 750;
         color: #6c0000;
     }
+    a:hover{
+        border-bottom: 3px solid;
+    }
+
     .offic-of-doctor{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
         background: antiquewhite;
         border-radius: 15px;
         margin: 40px;
@@ -41,39 +51,16 @@
         display: flex;
         margin-bottom: 30px;
     }
-    #img{
-        width: 100px;
-        height: 100px;
-        background: burlywood;
+    #img-user{
+        width: 150px;
+        height: 150px;
     }
     #data{
         margin-left: 20px;
     }
-    .admissions{
+    .pages{
         display: flex;
-        justify-content: space-between;
-        width: 80%;
+        flex-direction: column;
+    }
 
-    }
-    .future-admissions{
-        margin-top: 20px;
-        font-family: sans-serif;
-        font-weight: 750;
-        color: #6c0000;
-    }
-    .patients{
-        margin-top: 20px;
-        font-family: sans-serif;
-        font-weight: 750;
-        color: #6c0000;
-    }
-    .patients > a:hover{
-        border-bottom: 3px solid;
-    }
-    .future-admissions > a:hover{
-        border-bottom: 3px solid;
-    }
-    .past-admissions > a:hover{
-        border-bottom: 3px solid;
-    }
 </style>

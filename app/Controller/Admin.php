@@ -13,21 +13,31 @@ use Src\View;
 
 class Admin
 {
-    public function patient(): string
+    // public function patient(Request $request): string
+    // {
+    //     $users = User::all();
+    //     $admissions = Admission::all();
+    //     $patients = Patient::all();
+    //     if ($request->method === 'POST'){
+    //         $date = Admission::where('id', $request->Date_of_admission)->first();
+    //         $doc = User::where('id', $request->Surname)->first();
+    //         $patients = Patient::where('Date_of_admission', $date->id)->where('Surname', $doc->id)->get();
+    //         return (new View()) -> render('site.patient', [
+    //             'users'=>$users,
+    //             'admissions'=>$admissions,
+    //             'patients'=>$patients]);
+    //     }
+    //     return (new View())->render('site.patient', ['patients' => $patients]);
+    // }
+
+    public function patient(Request $request): string
     {
-        $users = User::all();
-        $admission = Admission::all();
-        $patients = Patient::all();
-        if ($request->method === 'POST'){
-            $date = Admission::where('id', $request->Date_of_admission)->first();
-            $doc = User::where('id', $request->Surname)->first();
-            $patients = Patient::where('Date_of_admission', $date->id)->where('Surname', $doc->id)->get();
-            return (new View()) -> render('site.patient', [
-                'users'=>$users,
-                'admission'=>$admission,
-                'patients'=>$patients]);
+        $patient = Patient::all();
+        if ($request->method === 'POST') {
+            $patient = Patient::where('Surname', $request->find)->get();
+            return (new View())->render('site.patient', ['patient' => $patient]);
         }
-        return (new View())->render('site.patient', ['patients' => $patients]);
+        return (new View())->render('site.patient', ['patient' => $patient]);
     }
 
     public function addOffice(Request $request): string

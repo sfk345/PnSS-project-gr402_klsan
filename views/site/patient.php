@@ -1,18 +1,25 @@
  <div class="fut-admissions">
     <h2>Пациенты</h2>
     <div class="list-of-patients">
-        <?php if ((app()->auth->user()->Role_id = 1)): ?>
-            <form>
-                <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
-                <label>Пациенты по дате
-                    <select name="Date_of_admission">
-                        <?php foreach ($admission as $adm){?>
-                            <option value="<?= $adm->id ?>"><?php $adm->Date_of_admission?></option>
-                        <?php }?>
-                    </select>
-                </label>
-            </form>
-        <a class="patient" href="addPatient">Добавить пациента</a>
+        <form method="post">
+            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
+            <input type="text" name="find" placeholder="Фамилия пациента">
+            <button>Найти</button>
+        </form>
+        <div>
+            <ul>
+                <?php foreach ($patient as $p){?>
+                    <li>
+                        <p><?= $p->Surname ?>  <?= $p->Name?>  <?= $p->Patronymic?></p>
+                        <a id="one" href="<?= app()->route->getUrl('/onePatient?id='. $p->id) ?>">Подробнее</a>
+                    </li>
+                <?php };?>
+            </ul>
+        </div>
+        <?php if (app()->auth::idPost() == 2):
+            ?>
+            <a href="<?= app()->route->getUrl('/addPatient') ?>">Добавление пациента</a>
+        <?php endif;?>
     </div>
 </div>
 <style>
@@ -52,9 +59,28 @@
         box-shadow: 0 5px 20px black;
     }
     .patient{
-        width: 55%;
+        width: 70%;
     }
     .patient:hover{
         border-bottom: 3px solid;
+    }
+    input{
+        display: flex;
+        justify-content: space-evenly;
+        border: none;
+        border-bottom: 3px solid;
+        width: 100%;
+        background: none;
+        outline: none;
+        margin-bottom: 10px;
+    }
+    button{
+        font-family: sans-serif;
+        font-weight: 750;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: none;
+        background: #6c0000;
+        color: #fff;
     }
 </style>

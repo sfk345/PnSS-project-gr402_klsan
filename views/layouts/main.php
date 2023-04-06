@@ -11,29 +11,7 @@
 <header>
    <nav>
        <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
-       <?php
-       if (app()->auth::idPost() == 1):
-           ?>
-           <a href="<?= app()->route->getUrl('/oneAdmin') ?>">Личный кабинет админа</a>
-           <a href="<?= app()->route->getUrl('/diagnosises') ?>">Список диагнозов</a>
-           <a href="<?= app()->route->getUrl('/offices') ?>">Список кабинетов</a>
-           <a href="<?= app()->route->getUrl('/signup') ?>">Добавление пользователя</a>
-       <?php endif;?>
-
-       <?php
-       if (app()->auth::idPost() == 2):
-            ?>
-            <a href="<?= app()->route->getUrl('/addAdmission') ?>">Запись на прием</a>
-            <a href="<?= app()->route->getUrl('/addPatient') ?>">Добавление пациента</a>
-            <a href="<?= app()->route->getUrl('/admission') ?>">Просмотр записей</a>
-       <?php endif;?>
-       <?php
-       if (app()->auth::idPost() == 3):
-       ?>
-           <a href="<?= app()->route->getUrl('/user') ?>">Личный кабинет доктора</a>
-       <?php endif;?>
    </nav>
-
    <div class="authentication">
    <?php
        if (!app()->auth::check()):
@@ -41,6 +19,7 @@
            <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
            <a id="signup" href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
        <?php else:?>
+           <a href="<?= app()->route->getUrl('/user') ?>">Личный кабинет</a>
            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->Name ?>)</a>
        <?php
        endif;
