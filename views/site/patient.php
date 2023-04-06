@@ -1,14 +1,17 @@
  <div class="fut-admissions">
     <h2>Пациенты</h2>
     <div class="list-of-patients">
-        <ul>
-            <?php foreach ($patients as $patient){?>
-                <li>
-                    <p><?= $patient->Surname ?>  <?= $patient->Name?>  <?= $patient->Patronymic?></p>
-                    <a id="one" href="<?= app()->route->getUrl('/onePatient?id='. $patient->id) ?>">Подробнее</a>
-                </li>
-            <?php };?>
-        </ul>
+        <?php if ((app()->auth->user()->Role_id = 1)): ?>
+            <form>
+                <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
+                <label>Пациенты по дате
+                    <select name="Date_of_admission">
+                        <?php foreach ($admission as $adm){?>
+                            <option value="<?= $adm->id ?>"><?php $adm->Date_of_admission?></option>
+                        <?php }?>
+                    </select>
+                </label>
+            </form>
         <a class="patient" href="addPatient">Добавить пациента</a>
     </div>
 </div>
