@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\Admission;
 use Model\Patient;
+use Model\Post;
 use Model\User;
 use Model\Diagnosis;
 use Model\Office;
@@ -62,19 +63,21 @@ class Register
             'admissions' => $admissions,
             'diagnos' => $diagnos
         ]);
-
-
     }
 
-    // public function addAdmission(Request $request): string
-    // {
-    //     if ($request->method === 'POST' && Admission::create($request->all())) {
-    //         app()->route->redirect('/addAdmission');
-    //     }
-    //     $patients = Patient::all;
-    //     $users = User::all();
-    //     $offices = Office::all();
-    //     $diagnosises = Diagnosis::all();
-    //     return new View('site.addAdmission', ['patients' => patients, 'users' => users, 'offices' => offices, 'diagnosises' => diagnosises]);
-    // }
+//    public static function oneUser(Request $request): string
+//    {
+//        $users = User::where('id', $request->id)->first();
+//        $post = Post::where('ID_post', $users->ID_post)->first();
+//        if ($request->method === 'POST' && $users->where('id', $request->id)->update(['ID_post' => $request->ID_post])) {
+//
+//            return new View('site.oneUser',
+//                ['users' => $users,
+//                    'post' => $post]);
+//        }
+//        return (new View())->render('site.oneUser', [
+//            'users' => $users,
+//            'post' => $post,
+//        ]);
+//    }
 }

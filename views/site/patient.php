@@ -1,4 +1,4 @@
-<div class="fut-admissions">
+ <div class="fut-admissions">
     <h2>Пациенты</h2>
     <div class="list-of-patients">
         <ul>
@@ -9,6 +9,7 @@
                 </li>
             <?php };?>
         </ul>
+        <a class="patient" href="addPatient">Добавить пациента</a>
     </div>
 </div>
 <style>
@@ -46,5 +47,11 @@
         font-weight: 750;
         color: #6c0000;
         box-shadow: 0 5px 20px black;
+    }
+    .patient{
+        width: 55%;
+    }
+    .patient:hover{
+        border-bottom: 3px solid;
     }
 </style>

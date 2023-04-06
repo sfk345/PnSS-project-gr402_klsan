@@ -5,6 +5,8 @@ namespace Controller;
 use Model\Office;
 use Model\Patient;
 use Model\Diagnosis;
+use Model\Post;
+use Model\User;
 use Src\Request;
 use Src\View;
 
@@ -15,16 +17,6 @@ class Admin
         $patients = Patient::all();
         return (new View())->render('site.patient', ['patients' => $patients]);
     }
-
-    public function addUser(): string
-    {
-        return (new View())->render('site.addUser', ['users' => $users]);
-    }
-
-    public function addAdm(): string
-    {
-        return (new View())->render('site.addAdm', ['adms' => $adms]);
-    }    
 
     public function addOffice(Request $request): string
     {
@@ -38,7 +30,7 @@ class Admin
     {
         //var_dump($request);die();
         if ($request->method === 'POST' && Diagnosis::create($request->all())) {
-            app()->route->redirect('/hello');
+            app()->route->redirect('/diagnosises');
         }
         return (new View())->render('site.addDiagnosis');
     }
@@ -47,6 +39,12 @@ class Admin
     {
         $diagnosises = Diagnosis::all();
         return (new View())->render('site.diagnosises', ['diagnosises' => $diagnosises]);
+    }
+
+    public function offices(): string
+    {
+        $offices = Office::all();
+        return (new View())->render('site.offices', ['offices' => $offices]);
     }
 
 }

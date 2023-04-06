@@ -46,5 +46,12 @@ class User extends Model implements IdentityInterface
         return self::where(['Name' => $credentials['Name'],
             'Password' => md5($credentials['Password'])])->first();
     }
+
+    public function photo($img)
+    {
+        $imgname = md5(time()). '.'. explode('/', $img['type'])[1];
+        $this->img = $imgname;
+        move_uploaded_file($img['tmp_name'], __DIR__ . '/../../public/img/' . $imgname);
+    }
 }
 

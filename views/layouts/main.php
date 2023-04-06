@@ -14,11 +14,12 @@
        <?php
        if (app()->auth::idPost() == 1):
            ?>
+
            <a href="<?= app()->route->getUrl('/diagnosises') ?>">Список диагнозов</a>
-           <a href="<?= app()->route->getUrl('/addUser') ?>">Добавление пользователя</a>
+           <a href="<?= app()->route->getUrl('/offices') ?>">Список кабинетов</a>
+           <a href="<?= app()->route->getUrl('/signup') ?>">Добавление пользователя</a>
            <a href="<?= app()->route->getUrl('/admission') ?>">Просмотр записей</a>
            <a href="<?= app()->route->getUrl('/patient') ?>">Просмотр пациентов</a>
-           <a href="<?= app()->route->getUrl('/addAdm') ?>">Диагноз/кабинет</a>
        <?php endif;?>
 
        <?php

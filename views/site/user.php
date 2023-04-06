@@ -1,7 +1,10 @@
 <div class="offic-of-doctor">
     <div class="data-of-doctor">
         <div id="img">
-            <img src="<?= $users->img;?>">
+            <img src="../../pnss-new/public/img/<?= $users->img;?>" style="width: 100px">
+            <?php
+//            var_dump($users); die();
+            ?>
         </div>
         <div id="data">
             <p>Фамилия: <?= $users->Surname;?></p>
@@ -39,6 +42,7 @@
     }
     .data-of-doctor{
         display: flex;
+        margin-bottom: 30px;
     }
     #img{
         width: 100px;
@@ -53,12 +57,6 @@
         justify-content: space-between;
         width: 80%;
 
-    }
-    .past-admissions{
-        margin-top: 20px;
-        font-family: sans-serif;
-        font-weight: 750;
-        color: #6c0000;
     }
     .future-admissions{
         margin-top: 20px;
