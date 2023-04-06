@@ -1,8 +1,8 @@
 <div class="fut-admissions">
-    <h2>Будущие записи</h2>
+    <h2>Список записей</h2>
     <div class="list-of-admissions">
         <?php foreach ($admissions as $adm){?>
-            <p><?= $adm->Date_of_admission?> - <?= $adm->ID_doctor?> - <?= $adm->ID_diagnosis?></p>
+            <p>Запись на: <?= $adm->Date_of_admission?> </p>
         <?php };?>
     </div>
 </div>

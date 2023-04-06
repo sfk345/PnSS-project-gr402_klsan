@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Admission;
 use Model\Office;
 use Model\Patient;
 use Model\Diagnosis;
@@ -14,7 +15,18 @@ class Admin
 {
     public function patient(): string
     {
+        $users = User::all();
+        $admission = Admission::all();
         $patients = Patient::all();
+        if ($request->method === 'POST'){
+            $date = Admission::where('id', $request->Date_of_admission)->first();
+            $doc = User::where('id', $request->Surname)->first();
+            $patients = Patient::where('Date_of_admission', $date->id)->where('Surname', $doc->id)->get();
+            return (new View()) -> render('site.patient', [
+                'users'=>$users,
+                'admission'=>$admission,
+                'patients'=>$patients]);
+        }
         return (new View())->render('site.patient', ['patients' => $patients]);
     }
 

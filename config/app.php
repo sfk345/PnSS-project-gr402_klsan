@@ -22,8 +22,8 @@ return [
        'password' => \Validators\PasswordValidator::class,
        'varchar' => \Validators\VarcharValidator::class,
        'cyrillic' => \Validators\CyrillicValidator::class,
-//       'sizeavatar' => \Validators\SizeAvatarValidator::class,
-//       'formatavatar' => \Validators\FormatAvatarValidator::class,
+       'sizeavatar' => \Validators\SizeAvatarValidator::class,
+       'formatavatar' => \Validators\FormatAvatarValidator::class,
 //       'unique' => \Validators\UniqueValidator::class,
    ]
 ];

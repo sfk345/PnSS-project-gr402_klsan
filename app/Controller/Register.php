@@ -65,19 +65,9 @@ class Register
         ]);
     }
 
-//    public static function oneUser(Request $request): string
-//    {
-//        $users = User::where('id', $request->id)->first();
-//        $post = Post::where('ID_post', $users->ID_post)->first();
-//        if ($request->method === 'POST' && $users->where('id', $request->id)->update(['ID_post' => $request->ID_post])) {
-//
-//            return new View('site.oneUser',
-//                ['users' => $users,
-//                    'post' => $post]);
-//        }
-//        return (new View())->render('site.oneUser', [
-//            'users' => $users,
-//            'post' => $post,
-//        ]);
-//    }
+    public function oneAdmin(): string
+    {
+        $users = User::where('Name', app()->auth->user()->Name)->first();
+        return (new View())->render('site.user', ['users' => $users]);
+    }
 }

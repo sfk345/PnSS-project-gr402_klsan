@@ -1,25 +1,25 @@
 <div class="offic-of-doctor">
-    <div class="data-of-doctor">
-        <div id="img">
-            <img src="../../pnss-new/public/img/<?= $users->img;?>" style="width: 100px">
-        </div>
-        <div id="data">
-            <p>Фамилия: <?= $users->Surname;?></p>
-            <p>Имя: <?= $users->Name;?></p>
-            <p>Отчество: <?= $users->Patronymic;?></p>
-            <p>Дата рождения: <?= $users->Date_of_birth;?></p>
-        </div>
+<div class="data-of-doctor">
+    <div id="img">
+        <img src="../../pnss-new/public/img/<?= $users->img;?>" style="width: 100px">
     </div>
-    <div class="admissions">
-        <div class="future-admissions">
-            <h3>Записи</h3>
-            <a href="admission">Открыть</a>
-        </div>
-        <div class="patients">
-            <h3>Пациенты</h3>
-            <a href="patient">Открыть</a>
-        </div>
+    <div id="data">
+        <p>Фамилия: <?= $users->Surname;?></p>
+        <p>Имя: <?= $users->Name;?></p>
+        <p>Отчество: <?= $users->Patronymic;?></p>
+        <p>Дата рождения: <?= $users->Date_of_birth;?></p>
     </div>
+</div>
+<div class="admissions">
+    <div class="future-admissions">
+        <h3>Записи</h3>
+        <a href="admission">Открыть</a>
+    </div>
+    <div class="patients">
+        <h3>Пациенты</h3>
+        <a href="patient">Открыть</a>
+    </div>
+</div>
 </div>
 <style>
     p{
