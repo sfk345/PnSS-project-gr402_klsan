@@ -36,18 +36,21 @@ class Site
             move_uploaded_file($img['tmp_name'], __DIR__. '/../../public/img/' . $imgname);*/
 
             $validator = new Validator($request->all(), $allValidator->signupValidator,
-            $allValidator->signupValidatorMessages);
+                $allValidator->signupValidatorMessages);
 
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return new View('site.signup',
                     ['message' => $validator->errors()]);
-            }else{
-                $img = $_FILES['img'];
-                $user = User::create($request->all());
-                $user->photo($img);
-                $user->save();
-                app()->route->redirect('/login');
             }
+
+            $img = $_FILES['img'];
+         //       var_dump($img);die();
+            $user = User::create($request->all());
+            $user->photo($img);
+//                var_dump(photo($img));die();
+            $user->save();
+            app()->route->redirect('/login');
+
         }
         return new View('site.signup');
     }
@@ -73,6 +76,6 @@ class Site
         app()->route->redirect('/hello');
     }
 
-    
+
 }
 

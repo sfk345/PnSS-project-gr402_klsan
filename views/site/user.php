@@ -1,7 +1,7 @@
 <div class="offic-of-doctor">
     <div class="data-of-doctor">
         <div id="img-user">
-            <img src="public/img/<?= $users->img;?>" style="width: 150px">
+            <img src="../../pnss-new/public/img/<?= $users->img;?>" style="width: 150px">
         </div>
         <div id="data">
             <p>Фамилия: <?= $users->Surname;?></p>

@@ -73,7 +73,7 @@ class Admin
             $allValidator->addDiagnosisMessages);
 
             if($validator->fails()){
-                return new View('site.signup',
+                return new View('site.addDiagnosis',
                     ['message' => $validator->errors()]);
             }else{
                 $diagnosis = Diagnosis::create($request->all());

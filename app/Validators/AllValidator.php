@@ -1,12 +1,12 @@
 <?php
 namespace Validators;
 
-use Src\Validators\AbstractValidator;
+use Src\Validator\AbstractValidator;
 
 class AllValidator
 {
     public array $signupValidator = [
-        'img' => ['sizeavatar'],
+        'img' => ['sizeavatar:users, img'],
         'Name' => ['required', 'cyrillic:users, name'],
         'Surname' => ['required', 'cyrillic:users, surname'],
         'Patronymic' => ['required', 'cyrillic:users, patronymic'],

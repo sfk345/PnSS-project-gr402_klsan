@@ -51,7 +51,8 @@ class User extends Model implements IdentityInterface
     {
         $imgname = md5(time()). '.'. explode('/', $img['type'])[1];
         $this->img = $imgname;
-        move_uploaded_file($img['tmp_name'], __DIR__ . '/../../public/img/' . $imgname);
+//        var_dump(move_uploaded_file($img['tmp_name'], $_SERVER['DOCUMENT_ROOT']  . '/pnss-new/public/img/' . $imgname));die();
+        move_uploaded_file($img['tmp_name'], $_SERVER['DOCUMENT_ROOT']  . '/pnss-new/public/img/' . $imgname);
     }
 }
 

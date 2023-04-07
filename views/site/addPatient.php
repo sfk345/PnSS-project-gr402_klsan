@@ -1,12 +1,12 @@
-<?php foreach($message as $mas => $value){
-      foreach($value as $errorMessages){
-         echo '<p style="color: red">'.$errorMessages.'</p>';
-      }
-   }; 
-?>
 <div class="fut-admissions">
     <h2>Добавление пациента</h2>
     <div class="add-patient">
+        <?php foreach($message as $mas => $value){
+            foreach($value as $errorMessages){
+                echo '<p style="color: red">'.$errorMessages.'</p>';
+            }
+        };
+        ?>
         <form method="post">
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>">
             <label>Имя <input type="text" name="Name"></label>

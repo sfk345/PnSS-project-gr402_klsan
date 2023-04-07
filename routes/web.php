@@ -16,7 +16,7 @@ Route::add(['GET', 'POST'], '/addDiagnosis', [Controller\Admin::class, 'addDiagn
 
 Route::add('GET', '/onePatient', [Controller\Doctor::class, 'onePatient'])->middleware('auth');
 Route::add(['GET', 'POST'], '/oneAdmission', [Controller\Register::class, 'oneAdmission'])->middleware('auth');
-// Route::add(['GET', 'POST'], '/oneAdmin', [Controller\Register::class, 'oneAdmin'])->middleware('auth');
+
 
 
 Route::add(['GET', 'POST'], '/updateDiagnosis', [Controller\Doctor::class, 'updateDiagnosis'])->middleware('auth');
