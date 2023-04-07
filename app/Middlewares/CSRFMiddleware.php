@@ -4,7 +4,7 @@ namespace Middlewares;
 
 use Exception;
 use Src\Request;
-use Src\Session;
+use function Session\sessions;
 
 class CSRFMiddleware
 {
@@ -14,7 +14,7 @@ class CSRFMiddleware
             return;
         }
         if (empty($request->get('csrf_token')) ||
-            $request->get('csrf_token')!==Session::get('csrf_token')) {
+            $request->get('csrf_token')!==sessions()->get('csrf_token')) {
             throw new Exception('Request not authorized');
         }
     }

@@ -23,5 +23,6 @@ return [
        'varchar' => \Validators\VarcharValidator::class,
        'cyrillic' => \Validators\CyrillicValidator::class,
        'sizeavatar' => \Validators\SizeAvatarValidator::class,
+       'unique' => \Validators\UniqueValidator::class
    ]
 ];

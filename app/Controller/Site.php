@@ -23,18 +23,6 @@ class Site
 
         if ($request->method === 'POST') {
 
-            /*$uploads_dir = $_SERVER['DOCUMENT_ROOT']. '/public/img/';
-            $img = $_FILES['img'];
-            // var_dump($_FILES['img']);
-            $tmp_file = $img['tmp_name'];
-            // var_dump($img['tmp_name']);
-            move_uploaded_file($tmp_file, $uploads_dir . $img['name']);
-            // var_dump($tmp_file, $uploads_dir . $img['name']);die();*/
-            /*$img = $_FILES['img'];
-            $imgname = md5(time()). '.'. explode('/', $img['type'])[1];
-            $this->filename = $imgname;
-            move_uploaded_file($img['tmp_name'], __DIR__. '/../../public/img/' . $imgname);*/
-
             $validator = new Validator($request->all(), $allValidator->signupValidator,
                 $allValidator->signupValidatorMessages);
 
@@ -50,6 +38,7 @@ class Site
 //                var_dump(photo($img));die();
             $user->save();
             app()->route->redirect('/login');
+            return false;
 
         }
         return new View('site.signup');
