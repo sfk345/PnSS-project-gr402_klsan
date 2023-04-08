@@ -1,26 +1,27 @@
 <?php
-use PHPUnit\Framework\TestCase;
+
 use Model\User;
-use Controller\Site;
+use PHPUnit\Framework\TestCase;
 use Src\Application;
-use Src\Request;
 use Src\Settings;
+
 
 class SiteTest extends TestCase
 {
    /**
     * @dataProvider additionProvider
     * @runInSeparateProcess
+     * @throws \PHPUnit\Framework\MockObject\Exception
     */
    public function testSignup(string $httpMethod, array $userData, string $message): void
    {
         //Выбираем занятый логин из базы данных
-        if ($userData['Name'] === 'Name is busi') {
+        if ($userData['Name'] === 'Name is busy') {
             $userData['Name'] = User::get()->first()->Name;
         }
 
         // Создаем заглушку для класса Request.
-        $request = $this->createMock(Request::class);
+        $request = $this->createMock(\Src\Request::class);
         // Переопределяем метод all() и свойство method
         $request->expects($this->any())
             ->method('all')
@@ -28,7 +29,7 @@ class SiteTest extends TestCase
         $request->method = $httpMethod;
 
         //Сохраняем результат работы метода в переменную
-        $result = (new Site())->signup($request);
+        $result = (new \Controller\Site())->signup($request);
 
         if (!empty($result)) {
             //Проверяем варианты с ошибками валидации
@@ -42,24 +43,25 @@ class SiteTest extends TestCase
         //Удаляем созданного пользователя из базы данных
         User::where('Name', $userData['Name'])->delete();
 
-        // //Проверяем редирект при успешной регистрации
-        // $this->assertContains($message, xdebug_get_headers());
+        //Проверяем редирект при успешной регистрации
+        $this->assertContains($message, xdebug_get_headers());
     }
 
 
     //Метод, возвращающий набор тестовых данных
-    public function additionProvider(): array
+    public static function additionProvider(): array
     {
         return [
-            ['GET', ['Name' => '', 'Surname' => '', 'Patronymic' => '', 'Date_of_birth' => '', 'Gender' => '', 'ID_post' => '', 'Password' => ''],
-                '<p style="color: red">Пустое поле Name</p>'
-            ],
-            ['POST', ['Name' => 'Софья', 'Surname' => 'Клепцына', 'Patronymic' => 'Андреевна', 'Date_of_birth' => '2004-01-27', 'Gender' => 'Ж', 'ID_post' => '1', 'Password' => ''],
-                ''
-            ],
-            ['POST', ['Name' => 'Софья', 'Surname' => 'Клепцына', 'Patronymic' => 'Андреевна', 'Date_of_birth' => '2004-01-27', 'Gender' => 'Ж', 'ID_post' => '1', 'Password' => ''],
+            ['POST', ['Name' => 'Name is busy', 'Surname' => '', 'Patronymic' => '', 'Date_of_birth' => '', 'Gender' => '', 'ID_post' => '', 'Password' => ''],
                 '<p style="color: red">Поле Name должно быть уникально</p>'
             ],
+            ['POST', ['Name' => 'Софья', 'Surname' => 'Клепцына', 'Patronymic' => 'Андреевна', 'Date_of_birth' => '2004-01-27', 'Gender' => 'Ж', 'ID_post' => '1', 'Password' => 'qweasdqweasd'],
+                '<p style="color: red">Поле Name должно быть уникально</p>'
+            ],
+            ['POST', ['Name' => 'Софья123', 'Surname' => 'Клепцына', 'Patronymic' => 'Андреевна', 'Date_of_birth' => '2004-01-27', 'Gender' => 'Ж', 'ID_post' => '1', 'Password' => 'qweasdqweasd'],
+                ''
+            ],
+
         ];
     }
 
@@ -68,13 +70,13 @@ class SiteTest extends TestCase
     protected function setUp(): void
     {
         //Установка переменной среды
-        $_SERVER['DOCUMENT_ROOT'] = 'C:\xampp\htdocs';
+        $_SERVER['DOCUMENT_ROOT'] = '/var/www/html';
 
         //Создаем экземпляр приложения
         $GLOBALS['app'] = new Application(new Settings([
-            'app' => include $_SERVER['DOCUMENT_ROOT'] . '/htdocs/config/app.php',
-            'db' => include $_SERVER['DOCUMENT_ROOT'] . '/htdocs/config/db.php',
-            'path' => include $_SERVER['DOCUMENT_ROOT'] . '/htdocs/config/path.php',
+            'app' => include $_SERVER['DOCUMENT_ROOT'] . '/pnss-new/config/app.php',
+            'db' => include $_SERVER['DOCUMENT_ROOT'] . '/pnss-new/config/db.php',
+            'path' => include $_SERVER['DOCUMENT_ROOT'] . '/pnss-new/config/path.php',
         ]));
 
         //Глобальная функция для доступа к объекту приложения

@@ -7,7 +7,7 @@ class AllValidator
 {
     public array $signupValidator = [
         'img' => ['sizeavatar:users, img'],
-        'Name' => ['required', 'unique' 'cyrillic:users, name'],
+        'Name' => ['required', 'unique:users,Name', 'cyrillic:users,Name'],
         'Surname' => ['required', 'cyrillic:users, surname'],
         'Patronymic' => ['required', 'cyrillic:users, patronymic'],
         'Date_of_birth' => ['required'],
@@ -41,9 +41,9 @@ class AllValidator
     ];
 
     public array $addPatientValidator = [
-        'Name' => ['required', 'cyrillic:users, name'],
-        'Surname' => ['required', 'cyrillic:users, surname'],
-        'Patronymic' => ['required', 'cyrillic:users, patronymic'],
+        'Name' => ['required', 'cyrillic:users,Name'],
+        'Surname' => ['required', 'cyrillic:users,surname'],
+        'Patronymic' => ['required', 'cyrillic:users,patronymic'],
         'Date_of_birth' => ['required'],
     ];
 
